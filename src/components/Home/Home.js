@@ -1,26 +1,22 @@
-import { Link } from "react-router-dom";
+
+
+import "../BannerFilm/BannerFilm.css"
 import "./Home.css"
-import bannerfuture from "../../assets/bannerfuture.svg"
-import bannerenola from "../../assets/bannerenola.svg"
-//imports
+import BannerFilm from "../BannerFilm/BannerFilm"
+//import components
 
-function BannerFilm({ banner }) {
-    return (
-
-        <Link to="/Page_2">
-            <button className="bannerFilm">
-                <img src={banner} alt="" />
-            </button>
-        </Link>
-
-    )
-}
-
-export default function Home() {
-
-    const bannersFilms = [bannerfuture, bannerenola, bannerfuture, bannerenola, bannerfuture, bannerfuture, bannerfuture, bannerenola,]
+//
+//
 
 
+//função que rederiza Home (page_1)
+export default function Home(props) {
+
+
+
+    // function bannerClick(element, index) {
+    //     bannerCliked = bannerFilms[index]
+    // }
 
 
     return (
@@ -32,10 +28,7 @@ export default function Home() {
                 <h1>Selecione o filme</h1>
 
                 <div className="bannersFilms">
-
-                    {bannersFilms.map((element, index) => <BannerFilm key={index} banner={element} />)}
-
-
+                    {props.bannersFilms.map((element, index) => <BannerFilm key={index} banner={element.image} bannerSelected={() => props.bannerSelected(element)} element={element} />)}
                 </div>
 
             </main>
