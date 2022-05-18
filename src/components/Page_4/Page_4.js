@@ -23,7 +23,7 @@ export default function Page_4({ banner, nameBanner, timeSession }) {
 
 
 
-                <ButtonOrange label=" Voltar para Home" to="/" />
+                <ButtonOrange label=" Voltar para Home" route="/" />
 
 
 

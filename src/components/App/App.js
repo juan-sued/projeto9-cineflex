@@ -54,7 +54,7 @@ export default function App() {
                     <Route path="/" element={<Home bannersFilms={bannersFilms} bannerSelected={bannerSelected} />} />
                     <Route path="/filme/:idBanner" element={<Page_2 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
                     <Route path="/sessao/:idSession" element={<Page_3 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
-                    <Route path="/sucesso/" element={<Page_4 />} />
+                    <Route path="/sucesso/" element={<Page_4 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
                 </Routes>
             </BrowserRouter>
         </>
