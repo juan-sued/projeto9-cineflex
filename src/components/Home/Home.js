@@ -1,7 +1,8 @@
-
-
-import "../BannerFilm/BannerFilm.css"
 import "./Home.css"
+import "../BannerFilm/BannerFilm.css"
+//import css
+
+import Header from "../Header/Header"
 import BannerFilm from "../BannerFilm/BannerFilm"
 //import components
 
@@ -19,11 +20,12 @@ export default function Home(props) {
     // }
 
 
+
+
+
     return (
         <>
-            <header>
-                CINEFLIX
-            </header>
+            <Header />
             <main>
                 <h1>Selecione o filme</h1>
 

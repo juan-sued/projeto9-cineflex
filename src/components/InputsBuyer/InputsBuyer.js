@@ -4,9 +4,6 @@ import "./InputsBuyer.css"
 
 
 
-
-
-
 export default function InputsBuyer() {
 
     return (

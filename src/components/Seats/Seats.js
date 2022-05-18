@@ -40,6 +40,7 @@ export default function Seats() {
 
     }
     return (
+
         <div className="seats">
             {arrSeats.map((element, index) => <Seat key={index} numberSeat={element} />)}
 

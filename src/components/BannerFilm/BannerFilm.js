@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 //função que componetiza o banner
 export default function BannerFilm(props) {
     return (
