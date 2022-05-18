@@ -1,39 +1,35 @@
-import { Link } from "react-router-dom";
-import BannerFilm from "../BannerFilm/BannerFilm";
+
+import Footer from "../Footer/Footer";
 import "./Page_2.css"
-
-function Footer({ banner, children }) {
-    return (
-        <footer>
-            <BannerFilm banner={banner} />
-
-            <div className="dateSession">
-                {children}
-            </div>
-
-        </footer>
-    )
+import Sessions from "../Sessions/Session";
 
 
-}
+
+
+
+
+
 
 export default function Page_2({ banner, nameBanner, timeSession }) {
     return (
         <>
             <header>CINEFLIX</header>
 
-            <main>
+            <main className="page_2">
                 <h1>Selecione a sessão</h1>
-                <Link to="/">
-                    <button>
-                        HOME
-                    </button>
-                </Link>
-                batatinha
+
+                <Sessions timeSession={timeSession} />
+
+
+
+
+
             </main>
+
+
             <Footer banner={banner}>
                 <h2> {nameBanner}</h2>
-                <h2>{timeSession}</h2>
+
             </Footer>
 
         </>

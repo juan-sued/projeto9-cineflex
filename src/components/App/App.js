@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import React, { useState } from "react";
 
 
@@ -11,6 +11,7 @@ import "../../css/styles.css"
 
 import Home from "../Home/Home";
 import Page_2 from "../Page_2/Page_2";
+import Page_3 from "../Page_3/Page_3"
 //import pages
 
 
@@ -26,15 +27,20 @@ import bannerenola from "../../assets/bannerenola.svg"
 
 export default function App() {
     const bannersFilms = [
-        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00" },
-        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 15:00" },
-        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00" },
-        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 15:00" },
-        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00" },
-        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 15:00" },
-        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00" },
-        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 15:00" },
+        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00", id: 20 },
+        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 16:30", id: 13 },
+        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00", id: 20 },
+        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 16:30", id: 13 },
+        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00", id: 20 },
+        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 16:30", id: 13 },
+        { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00", id: 20 },
+        { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 16:30", id: 13 },
     ]
+
+
+
+
+
 
     const [banner, setBanner] = useState("")
 
@@ -43,12 +49,15 @@ export default function App() {
         setBanner(element)
     }
 
+    // const { idBanner } = useParams();
+
     return (
         <>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home bannersFilms={bannersFilms} bannerSelected={bannerSelected} />} />
-                    <Route path="/page_2" element={<Page_2 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
+                    <Route path="/filme/:idBanner" element={<Page_2 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
+                    <Route path="/sessao/:idSession" element={<Page_3 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
                 </Routes>
             </BrowserRouter>
         </>

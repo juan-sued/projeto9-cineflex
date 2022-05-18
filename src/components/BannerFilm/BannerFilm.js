@@ -4,7 +4,7 @@ export default function BannerFilm(props) {
     return (
         <button className="bannerFilm">
 
-            <Link to="/Page_2">
+            <Link to="/filme/:idBanner">
                 <img src={props.banner} alt="" onClick={() => props.bannerSelected(props.element)} />
             </Link>
 
