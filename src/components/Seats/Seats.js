@@ -1,14 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 //import react
 
 
-import "./Seats.css"
-// import css
 
 
 
-
-//função que componetiza assento
+//função que componetiza um assento
 function Seat({ numberSeat }) {
     return (
         <button className="seat">
@@ -17,6 +15,9 @@ function Seat({ numberSeat }) {
 
     )
 }
+
+
+
 
 //função que renderiza assentos
 export default function Seats() {
@@ -41,11 +42,40 @@ export default function Seats() {
     }
     return (
 
-        <div className="seats">
+        <SeatsClass >
             {arrSeats.map((element, index) => <Seat key={index} numberSeat={element} />)}
-
-        </div>
+        </SeatsClass>
     )
 }
 
 
+
+const SeatsClass = styled.div`
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 24px;
+
+
+
+
+
+button {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #C3CFD9;
+    border: 1px solid #808F9D;
+    border-radius: 12px;
+    margin-right: 10px;
+    margin-bottom: 19px;
+
+}
+
+
+
+`;

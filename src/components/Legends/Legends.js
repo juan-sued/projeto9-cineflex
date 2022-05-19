@@ -15,7 +15,7 @@ export default function Legends() {
             </div>
             <div className="legend">
                 <div className="availableColor"></div>
-                <p>Selecionado</p>
+                <p>Disponível</p>
             </div>
             <div className="legend">
                 <div className="unavailableColor"></div>

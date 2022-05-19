@@ -1,8 +1,10 @@
 import "./Home.css"
-import "../BannerFilm/BannerFilm.css"
+
+import styled from "styled-components";
 //import css
 
 import Header from "../Header/Header"
+import Main from "../Main/Main";
 import BannerFilm from "../BannerFilm/BannerFilm"
 //import components
 
@@ -15,9 +17,6 @@ export default function Home(props) {
 
 
 
-    // function bannerClick(element, index) {
-    //     bannerCliked = bannerFilms[index]
-    // }
 
 
 
@@ -26,15 +25,31 @@ export default function Home(props) {
     return (
         <>
             <Header />
-            <main>
-                <h1>Selecione o filme</h1>
-
-                <div className="bannersFilms">
+            <Main text="Selecione o filme">
+                <BannersFilms>
                     {props.bannersFilms.map((element, index) => <BannerFilm key={index} banner={element.image} bannerSelected={() => props.bannerSelected(element)} element={element} />)}
-                </div>
+                </BannersFilms>
 
-            </main>
+            </Main>
+
 
         </>
     )
 }
+
+
+
+const BannersFilms = styled.div`
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+
+
+
+
+
+
+`;

@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+
 import React from "react"
 //imports react
 
 import "./Page_3.css"
 //import css
 
+import Main from "../Main/Main";
 import Header from "../Header/Header";
 import Legends from "../Legends/Legends";
 import InputsBuyer from "../InputsBuyer/InputsBuyer";
@@ -25,8 +26,7 @@ export default function Page_3({ banner, nameBanner, timeSession }) {
         <>
             <Header />
 
-            <main className="page_3">
-                <h1>Selecione o(s) assento(s)</h1>
+            <Main text="Selecione o(s) assento(s)">
 
                 <Seats />
 
@@ -36,10 +36,7 @@ export default function Page_3({ banner, nameBanner, timeSession }) {
 
                 <ButtonOrange label=" Reservar assento(s)" route={"/sucesso/"} />
 
-
-
-
-            </main>
+            </Main>
 
 
             <Footer banner={banner}>

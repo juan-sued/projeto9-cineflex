@@ -1,9 +1,9 @@
-import "./Page_2.css"
-//import css
+
 
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Main from "../Main/Main";
 import Sessions from "../Sessions/Session";
+import Footer from "../Footer/Footer";
 // import components
 
 
@@ -17,15 +17,12 @@ export default function Page_2({ banner, nameBanner, timeSession }) {
         <>
             <Header />
 
-            <main className="page_2">
-                <h1>Selecione a sessão</h1>
+            <Main text="Selecione a sessão">
                 <Sessions timeSession={timeSession} />
-            </main>
-
+            </Main>
 
             <Footer banner={banner}>
                 <h2> {nameBanner}</h2>
-
             </Footer>
 
         </>
