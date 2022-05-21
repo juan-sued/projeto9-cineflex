@@ -3,7 +3,6 @@ import "./Page_4.css"
 import styled from "styled-components"
 //import css
 
-import Header from "../Header/Header"
 import Main from "../Main/Main"
 import ButtonOrange from "../ButtonOrange/ButtonOrange"
 //import components
@@ -17,7 +16,6 @@ export default function Page_4({ banner, nameBanner, timeSession }) {
 
     return (
         <>
-            <Header />
 
             <Main>
                 <TextSucess>

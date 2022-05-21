@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 
-import Header from "../Header/Header";
+
 import Main from "../Main/Main";
 import Sessions from "../Sessions/Session";
 import Footer from "../Footer/Footer";
@@ -17,13 +17,13 @@ import Footer from "../Footer/Footer";
 export default function Page_2({ banner, nameBanner, timeSession }) {
     return (
         <>
-            <Header />
+
 
             <Main>
-
                 <TitlePage>
                     Selecione a sessão
                 </TitlePage>
+
                 <Sessions timeSession={timeSession} />
             </Main>
 

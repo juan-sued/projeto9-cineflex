@@ -17,8 +17,6 @@ function Seat({ numberSeat }) {
 }
 
 
-
-
 //função que renderiza assentos
 export default function Seats() {
     const [arrSeats, setArrSeats] = React.useState([]);
@@ -55,8 +53,8 @@ const SeatsClass = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
-    padding: 24px;
+    justify-content: center;
+    padding: 24px 14px 24px 24px;
 
 
 

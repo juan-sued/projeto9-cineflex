@@ -1,9 +1,9 @@
-import "./Home.css"
+
 
 import styled from "styled-components";
 //import css
 
-import Header from "../Header/Header"
+
 import Main from "../Main/Main";
 import BannerFilm from "../BannerFilm/BannerFilm"
 //import components
@@ -24,13 +24,13 @@ export default function Home(props) {
 
     return (
         <>
-            <Header />
+
             <Main>
 
                 <TitlePage>Selecione o filme</TitlePage>
 
                 <BannersFilms>
-                    {props.bannersFilms.map((element, index) => <BannerFilm key={index} banner={element.image} bannerSelected={() => props.bannerSelected(element)} element={element} />)}
+                    {props.responseAPI.map((element, index) => <BannerFilm key={index} banner={element.posterURL} bannerSelected={() => props.bannerSelected(element)} element={element} />)}
                 </BannersFilms>
 
             </Main>

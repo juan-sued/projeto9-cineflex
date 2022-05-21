@@ -3,11 +3,8 @@ import React from "react"
 import styled from "styled-components";
 //imports react
 
-import "./Page_3.css"
-//import css
 
 import Main from "../Main/Main";
-import Header from "../Header/Header";
 import Legends from "../Legends/Legends";
 import InputsBuyer from "../InputsBuyer/InputsBuyer";
 import Seats from "../Seats/Seats";
@@ -23,7 +20,7 @@ export default function Page_3({ banner, nameBanner, timeSession }) {
 
     return (
         <>
-            <Header />
+
 
             <Main>
                 <TitlePage>Selecione o(s) assento(s)</TitlePage>

@@ -30,7 +30,10 @@ const BannerFilmClass = styled.button`
     margin: 20px 0 0 20px;
 
 
-
+img {
+    height: 100%;
+    width: 100%;
+}
 
 
 
