@@ -28,13 +28,28 @@ const BannerFilmClass = styled.button`
     width: 145px;
     height: 209px;
     margin: 20px 0 0 20px;
-
+   
 
 img {
     height: 100%;
     width: 100%;
+
+
 }
 
+   &  :hover {
+        min-width: 195px;
+         min-height: 259px;
+         position: relative;
+         z-index: 3;
+         right: 15px;
+         bottom: 5px;
+         box-shadow: none;
+         background-color: none;
+         border-radius: 10px;
+
+         
+    }
 
 
 
