@@ -43,5 +43,6 @@ h3 {
     display: flex;
     align-items: center;
     letter-spacing: 0.02em;
-    color: var(--colorPreto)
+    color: var(--colorPreto);
+
 }

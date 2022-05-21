@@ -1,5 +1,6 @@
 
 import React from "react"
+import styled from "styled-components";
 //imports react
 
 import "./Page_3.css"
@@ -12,10 +13,8 @@ import InputsBuyer from "../InputsBuyer/InputsBuyer";
 import Seats from "../Seats/Seats";
 import ButtonOrange from "../ButtonOrange/ButtonOrange";
 import Footer from "../Footer/Footer";
+
 // import components
-
-
-
 
 
 
@@ -26,8 +25,8 @@ export default function Page_3({ banner, nameBanner, timeSession }) {
         <>
             <Header />
 
-            <Main text="Selecione o(s) assento(s)">
-
+            <Main>
+                <TitlePage>Selecione o(s) assento(s)</TitlePage>
                 <Seats />
 
                 <Legends />
@@ -47,3 +46,7 @@ export default function Page_3({ banner, nameBanner, timeSession }) {
         </>
     )
 }
+const TitlePage = styled.h1`
+
+
+`;

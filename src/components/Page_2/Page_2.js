@@ -1,4 +1,6 @@
 
+import styled from "styled-components";
+
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -17,7 +19,11 @@ export default function Page_2({ banner, nameBanner, timeSession }) {
         <>
             <Header />
 
-            <Main text="Selecione a sessão">
+            <Main>
+
+                <TitlePage>
+                    Selecione a sessão
+                </TitlePage>
                 <Sessions timeSession={timeSession} />
             </Main>
 
@@ -28,3 +34,9 @@ export default function Page_2({ banner, nameBanner, timeSession }) {
         </>
     )
 }
+
+
+const TitlePage = styled.h1`
+
+
+`;

@@ -25,7 +25,10 @@ export default function Home(props) {
     return (
         <>
             <Header />
-            <Main text="Selecione o filme">
+            <Main>
+
+                <TitlePage>Selecione o filme</TitlePage>
+
                 <BannersFilms>
                     {props.bannersFilms.map((element, index) => <BannerFilm key={index} banner={element.image} bannerSelected={() => props.bannerSelected(element)} element={element} />)}
                 </BannersFilms>
@@ -47,9 +50,9 @@ const BannersFilms = styled.div`
     align-items: center;
     margin-right: 20px;
 
+`;
 
-
-
+const TitlePage = styled.h1`
 
 
 `;

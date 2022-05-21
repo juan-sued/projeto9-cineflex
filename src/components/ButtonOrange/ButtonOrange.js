@@ -9,8 +9,8 @@ import "./ButtonOrange.css"
 export default function ButtonOrange({ label, route }) {
     return (
 
-        <Link to={route} >
-            <ButtonOrangeClass>
+        <Link style={{ textDecoration: "none", color: "black" }} to={route} >
+            <ButtonOrangeClass margin={30} >
                 {label}
             </ButtonOrangeClass>
         </Link>
@@ -21,7 +21,7 @@ export default function ButtonOrange({ label, route }) {
 
 const ButtonOrangeClass = styled.button`
 
-     margin-top: 29px;
+     margin-top:${props => props.margin}px;
      width: 225px;
      height: 42px;
      background: #E8833A;
@@ -35,7 +35,8 @@ const ButtonOrangeClass = styled.button`
      justify-content: center;
      align-items: center;
      letter-spacing: 0.04em;
-     color: white
+     color: white;
+    
  
 
 
