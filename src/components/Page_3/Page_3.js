@@ -1,6 +1,9 @@
-
-import React from "react"
 import styled from "styled-components";
+
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"
+import axios from "axios";
+
 //imports react
 
 
@@ -18,27 +21,71 @@ import Footer from "../Footer/Footer";
 export default function Page_3({ banner, nameBanner, timeSession }) {
 
 
+
+
+
+    const [seatAPI, setSeatAPI] = useState(null);
+
+    const [objectSeatsAPI, setObjectSeatsAPI] = useState({});
+
+    const { idSession } = useParams();
+
+    useEffect(() => {
+
+
+        console.log(idSession)
+
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idSession}/showtimes`);
+
+        promise.then(response => {
+            console.log("response.data api2 é:", response.data.seats)
+            setSeatAPI([...response.data.seats])
+            setObjectSeatsAPI({ ...response.data })
+        })
+
+    }, []
+    )
+
+
+
+
+
+
+
+
+
+
     return (
         <>
 
-
-            <Main>
-                <TitlePage>Selecione o(s) assento(s)</TitlePage>
-                <Seats />
-
-                <Legends />
-
-                <InputsBuyer />
-
-                <ButtonOrange label=" Reservar assento(s)" route={"/sucesso/"} />
-
-            </Main>
+            {seatAPI === null ? <img src="../../assets/loading.jpeg" alt=""></img> : <>
 
 
-            <Footer banner={banner}>
-                <h2> {nameBanner}</h2>
-                <h2>{timeSession}</h2>
-            </Footer>
+
+                <Main>
+                    <TitlePage>Selecione o(s) assento(s)</TitlePage>
+
+                    <Seats />
+
+                    <Legends />
+
+                    <InputsBuyer />
+
+                    <ButtonOrange label=" Reservar assento(s)" route={"/sucesso/"} />
+
+                </Main>
+
+
+                <Footer banner={objectSeatsAPI.movie.posterURL}>
+                    <h2> {objectSeatsAPI.movie.title}</h2>
+                    <h2>{objectSeatsAPI.name}</h2>
+                </Footer>
+
+            </>
+            }
+
+
+
 
         </>
     )

@@ -1,6 +1,5 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState, useParams, useEffect } from "react";
 //import react
 
 
@@ -18,47 +17,16 @@ import Header from "../Header/Header";
 //import pages
 
 
-//
-
-
-import axios from "axios";
-//imports assets
-
 
 
 
 
 export default function App() {
 
-    const [responseAPI, setResponseAPI] = useState([]);
 
 
-
-
-
-
-    useEffect(() => {
-
-        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
-
-        promise.then(response => {
-            console.log(response.data)
-            setResponseAPI([...response.data])
-        })
-
-
-    }, []
-    )
-
-    console.log(responseAPI);
-
-
-
-
-
-
-    // const bannersFilms = [
-    //     { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00", id: 20 },
+    // const filmsFilms = [
+    //     { posterURL: bannerfuture, name: "2067", session: "Quinta-feira - 15:00", id: 20 },
     //     { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 16:30", id: 13 },
     //     { image: bannerfuture, name: "2067", session: "Quinta-feira - 15:00", id: 20 },
     //     { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 16:30", id: 13 },
@@ -68,24 +36,23 @@ export default function App() {
     //     { image: bannerenola, name: "Enola Holmes", session: "Quinta-feira - 16:30", id: 13 },
     // ]
 
-    const [banner, setBanner] = useState("")
 
-    function bannerSelected(element) {
-        console.log(element)
-        setBanner(element)
-    }
 
-    // const { idBanner } = useParams();
+
+    // const { idfilm } = useParams();
 
     return (
         <>
             <BrowserRouter>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<Home responseAPI={responseAPI} bannerSelected={bannerSelected} />} />
-                    <Route path="/filme/:idBanner" element={<Page_2 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
-                    <Route path="/sessao/:idSession" element={<Page_3 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
-                    <Route path="/sucesso/" element={<Page_4 banner={banner.image} nameBanner={banner.name} timeSession={banner.session} />} />
+                    <Route path="/" element={<Home />} />
+
+                    <Route path="/filme/:idfilm" element={<Page_2 />} />
+
+                    <Route path="/sessao/:idSession" element={<Page_3 />} />
+
+                    <Route path="/sucesso/" element={<Page_4 />} />
                 </Routes>
             </BrowserRouter>
         </>

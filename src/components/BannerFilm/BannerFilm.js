@@ -4,11 +4,13 @@ import styled from "styled-components";
 
 
 //função que componetiza o banner
-export default function BannerFilm(props) {
+export default function BannerFilm({ postersFilmsAPI, banner, idfilm }) {
     return (
         <BannerFilmClass >
-            <Link to="/filme/:idBanner">
-                <img src={props.banner} alt="" onClick={() => props.bannerSelected(props.element)} />
+            {console.log("batatinhaapi", postersFilmsAPI)}
+            <Link to={`/filme/${idfilm}`}>
+                {postersFilmsAPI === null ? '<LoadImageClass src="../../assets/loading.jpeg" alt="" />' : <img src={banner} alt="" />}
+
             </Link>
         </BannerFilmClass >
     )
@@ -37,6 +39,7 @@ img {
 
 }
 
+
    &  :hover {
         min-width: 195px;
          min-height: 259px;
@@ -50,6 +53,19 @@ img {
 
          
     }
+
+
+
+
+`;
+
+
+const LoadImageClass = styled.img`
+
+        min-width: 195px;
+         min-height: 259px;
+         background-color: red;
+
 
 
 

@@ -1,4 +1,6 @@
 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import styled from "styled-components";
 //import css
@@ -13,24 +15,37 @@ import BannerFilm from "../BannerFilm/BannerFilm"
 
 
 //função que rederiza Home (page_1)
-export default function Home(props) {
+export default function Home() {
 
+    const [postersFilmsAPI, setPostersFilmsAPI] = useState([]);
 
+    // requisição dos posters principais API 
+    useEffect(() => {
 
+        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
 
+        promise.then(response => {
+            console.log(response.data)
+            setPostersFilmsAPI([...response.data])
+        })
+    }, []
+    )
 
-
+    console.log("REQUISITOU A PRIMEIRA API", postersFilmsAPI);
 
 
     return (
         <>
+
+
+
 
             <Main>
 
                 <TitlePage>Selecione o filme</TitlePage>
 
                 <BannersFilms>
-                    {props.responseAPI.map((element, index) => <BannerFilm key={index} banner={element.posterURL} bannerSelected={() => props.bannerSelected(element)} element={element} />)}
+                    {postersFilmsAPI.map((element) => <BannerFilm key={element.id} banner={element.posterURL} postersFilmsAPI={postersFilmsAPI} idfilm={element.id} element={element} />)}
                 </BannersFilms>
 
             </Main>

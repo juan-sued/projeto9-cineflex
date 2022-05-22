@@ -19,6 +19,8 @@ function Seat({ numberSeat }) {
 
 //função que renderiza assentos
 export default function Seats() {
+
+
     const [arrSeats, setArrSeats] = React.useState([]);
 
     if (arrSeats.length < 50) {
@@ -41,7 +43,7 @@ export default function Seats() {
     return (
 
         <SeatsClass >
-            {arrSeats.map((element, index) => <Seat key={index} numberSeat={element} />)}
+            {arrSeats.map((element, index) => <Seat key={index} />)}
         </SeatsClass>
     )
 }

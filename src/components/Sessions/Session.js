@@ -1,35 +1,34 @@
 import { Link } from "react-router-dom";
 import "./Sessions.css"
 
-function Session({ timeSession }) {
+//function que renderiza as sessions
+export default function Sessions({ days }) {
+    return (
+        <div className="sessions">
+
+            {days.map((e) => <Session daySession={e.date} weekday={e.weekday} key={e.id} id={e.id} showtimes={e.showtimes} />)}
+
+        </div>
+
+    )
+}
+
+//function que componentiza session
+function Session({ daySession, weekday, showtimes }) {
     return (
         <div className="session">
             <h3>
-                {timeSession} - 21/10/2022
+                {weekday} - {daySession}
             </h3>
             <span className="timeSessions">
-                <Link to="/">
-                    <button>15:00</button>
+                <Link to={`/sessao/${showtimes[0].id}`}>
+                    <button>{showtimes[0].name}</button>
                 </Link>
-                <Link to="/sessao/:idSession">
-                    <button>19:00</button>
+                <Link to={`/sessao/${showtimes[1].id}`}>
+                    <button>{showtimes[1].name}</button>
                 </Link>
 
             </span>
         </div>
-    )
-}
-
-export default function Sessions({ timeSession }) {
-    return (
-        <div className="sessions">
-
-            <Session timeSession={timeSession} />
-            <Session timeSession={timeSession} />
-            <Session timeSession={timeSession} />
-            <Session timeSession={timeSession} />
-        </div>
-
-
     )
 }
