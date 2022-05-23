@@ -6,18 +6,33 @@ import "./ButtonOrange.css"
 
 
 
-export default function ButtonOrange({ label, route }) {
+export default function ButtonOrange({ label, route, type }) {
     return (
 
-        <Link style={{ textDecoration: "none", color: "black" }} to={route} >
-            <ButtonOrangeClass margin={30} >
-                {label}
-            </ButtonOrangeClass>
-        </Link>
+        <Container>
+            <Link style={{ textDecoration: "none", color: "black" }} to={route} >
+                <ButtonOrangeClass margin={30} type={type} >
+                    {label}
+                </ButtonOrangeClass>
+            </Link>
+        </Container>
 
 
     )
 }
+
+
+
+const Container = styled.div`
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+
+
+`;
+
 
 const ButtonOrangeClass = styled.button`
 

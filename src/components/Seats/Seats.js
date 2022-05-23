@@ -24,8 +24,6 @@ function Seat(props) {
 
     //função que pega o botão que foi clicado
     function seatClick(seatClicked, isAvailableClicked) {
-        console.log(seatClicked)
-        console.log(isAvailableClicked)
 
         if (isAvailableClicked === true) {
 
@@ -35,7 +33,7 @@ function Seat(props) {
 
         } else {
 
-            console.log("disponível", seatClicked)
+            alert("Este assento encontra-se ocupado!")
         }
     }
 
@@ -53,34 +51,16 @@ function Seat(props) {
 
 
 
-
-
-
-
 //função que renderiza assentos
-export default function Seats({ seats }) {
+export default function Seats(props) {
 
-    const [seatsReservedList, setSeatsReservedList] = useState([])
 
-    function incrementSeatReservedList(seat) {
 
-        if (seatsReservedList.find(e => e === seat)) {
-            console.log("encontrou um igual")
-            const seatsReservedListFilter = seatsReservedList.filter(e => e !== seat)
-            console.log("fez o filter")
 
-            setSeatsReservedList(seatsReservedListFilter)
-
-        } else {
-            setSeatsReservedList([...seatsReservedList, seat])
-        }
-    }
-
-    console.log(seatsReservedList)
     return (
 
         <SeatsClass >
-            {seats.map((element, index) => <Seat key={index} isAvailable={element.isAvailable} incrementSeatReservedList={incrementSeatReservedList} numberSeat={index + 1} />)}
+            {props.seats.map((element, index) => <Seat key={index} isAvailable={element.isAvailable} incrementSeatReservedList={props.incrementSeatReservedList} numberSeat={index + 1} />)}
         </SeatsClass>
     )
 }

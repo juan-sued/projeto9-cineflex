@@ -11,7 +11,7 @@ import Main from "../Main/Main";
 import Legends from "../Legends/Legends";
 import InputsBuyer from "../InputsBuyer/InputsBuyer";
 import Seats from "../Seats/Seats";
-import ButtonOrange from "../ButtonOrange/ButtonOrange";
+
 import Footer from "../Footer/Footer";
 
 // import components
@@ -48,6 +48,63 @@ export default function Page_3() {
 
 
 
+    const [seatsReservedList, setSeatsReservedList] = useState([])
+
+
+
+
+
+    function incrementSeatReservedList(seat) {
+
+        if (seatsReservedList.find(e => e === seat - 1)) {
+
+            const seatsReservedListFilter = seatsReservedList.filter(e => e !== seat - 1)
+
+            setSeatsReservedList(seatsReservedListFilter)
+
+        } else {
+
+            setSeatsReservedList([...seatsReservedList, seat - 1])
+        }
+    }
+    console.log(seatsReservedList)
+
+
+    console.log(seatsAPI)
+
+
+
+
+    const [idSeatsReserved, setIdSeatsReserved] = useState([])
+
+    useEffect(() => {
+
+        for (let i = 0; i < seatsAPI.length; i++) {
+
+            for (let j = 0; j < seatsReservedList.length; j++) {
+
+                if (seatsReservedList[j] === seatsAPI[i]) {
+
+                    setIdSeatsReserved([...idSeatsReserved, seatsAPI[i].id])
+                    console.log("adicionou")
+
+
+                }
+
+            }
+
+
+
+
+        }
+    }, []
+    )
+
+    console.log("isso é oq quero", idSeatsReserved)
+
+
+
+
     return (
         <>
 
@@ -56,13 +113,12 @@ export default function Page_3() {
             <Main>
                 <TitlePage>Selecione o(s) assento(s)</TitlePage>
 
-                <Seats seats={seatsAPI} />
+                <Seats seats={seatsAPI} incrementSeatReservedList={incrementSeatReservedList} />
 
                 <Legends />
 
                 <InputsBuyer />
 
-                <ButtonOrange label=" Reservar assento(s)" route={"/sucesso/"} />
 
             </Main>
 
