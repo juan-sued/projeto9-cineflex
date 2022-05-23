@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import axios from "axios";
 
-
+import loading from "../../assets/loading.jpeg"
 import Main from "../Main/Main";
 import Sessions from "../Sessions/Session";
 import Footer from "../Footer/Footer";
@@ -31,25 +31,25 @@ export default function Page_2() {
     useEffect(() => {
 
 
-        console.log(idfilm)
+
 
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idfilm}/showtimes`);
 
         promise.then(response => {
-            console.log("response.data api2 é:", response.data.days)
+
             setSessionsDaysAPI([...response.data.days])
             setSessionsObjectAPI({ ...response.data })
         })
 
-    }, []
+    }, [idfilm]
     )
 
 
 
-    console.log("a segunda API é:", sessionsDaysAPI);
+
     return (
         <>
-            {sessionsDaysAPI === null ? <img src="../../assets/loading.jpeg" alt=""></img> : <>
+            {sessionsDaysAPI === null ? <img src={loading} alt=""></img> : <>
 
                 <Main>
 
@@ -60,7 +60,8 @@ export default function Page_2() {
                     <Sessions days={sessionsDaysAPI} />
                 </Main>
 
-                <Footer banner={sessionsObjectAPI.posterURL}>
+                <Footer>
+                    <BannerClass> <img src={sessionsObjectAPI.posterURL} alt="" /> </BannerClass>
                     <h2> {sessionsObjectAPI.title}</h2>
                 </Footer>
             </>
@@ -72,6 +73,25 @@ export default function Page_2() {
     )
 }
 
+const BannerClass = styled.div`
+
+
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px 2px #0000001a;
+    border-radius: 3px;
+    padding: 4px;
+    width: 64px;
+    height: 89px;
+  
+   
+
+img {
+    height: 100%;
+    width: 100%;
+
+
+}`;
 
 const TitlePage = styled.h1`
 

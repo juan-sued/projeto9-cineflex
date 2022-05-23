@@ -22,8 +22,7 @@ export default function InputsBuyer() {
 
         const inputBuyer = e.target.value
 
-        console.log(e)
-        console.log(inputBuyer)
+
 
         if (inputBuyer.length === 10) {
             setInputValueName(inputBuyer);

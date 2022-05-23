@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import axios from "axios";
 
@@ -18,13 +18,11 @@ import Footer from "../Footer/Footer";
 
 
 
-export default function Page_3({ banner, nameBanner, timeSession }) {
+export default function Page_3() {
 
 
 
-
-
-    const [seatAPI, setSeatAPI] = useState(null);
+    const [seatsAPI, setSeatsAPI] = useState([]);
 
     const [objectSeatsAPI, setObjectSeatsAPI] = useState({});
 
@@ -32,65 +30,100 @@ export default function Page_3({ banner, nameBanner, timeSession }) {
 
     useEffect(() => {
 
-
-        console.log(idSession)
-
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idSession}/showtimes`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSession}/seats`);
 
         promise.then(response => {
-            console.log("response.data api2 é:", response.data.seats)
-            setSeatAPI([...response.data.seats])
-            setObjectSeatsAPI({ ...response.data })
+
+
+
+            setSeatsAPI(response.data.seats)
+            setObjectSeatsAPI(response.data)
+
         })
 
-    }, []
+        promise.catch(err => console.log(err))
+
+    }, [idSession]
     )
-
-
-
-
-
-
-
 
 
 
     return (
         <>
 
-            {seatAPI === null ? <img src="../../assets/loading.jpeg" alt=""></img> : <>
 
 
+            <Main>
+                <TitlePage>Selecione o(s) assento(s)</TitlePage>
 
-                <Main>
-                    <TitlePage>Selecione o(s) assento(s)</TitlePage>
+                <Seats seats={seatsAPI} />
 
-                    <Seats />
+                <Legends />
 
-                    <Legends />
+                <InputsBuyer />
 
-                    <InputsBuyer />
+                <ButtonOrange label=" Reservar assento(s)" route={"/sucesso/"} />
 
-                    <ButtonOrange label=" Reservar assento(s)" route={"/sucesso/"} />
+            </Main>
 
-                </Main>
+            <Footer>
+                <BannerClass>
+                    {objectSeatsAPI.movie === undefined ? "" :
+                        <img src={objectSeatsAPI.movie.posterURL} alt="" />
+                    }
+                </BannerClass>
 
-
-                <Footer banner={objectSeatsAPI.movie.posterURL}>
-                    <h2> {objectSeatsAPI.movie.title}</h2>
-                    <h2>{objectSeatsAPI.name}</h2>
-                </Footer>
-
-            </>
-            }
-
-
-
+                {objectSeatsAPI.movie === undefined ? "" :
+                    <DateSession >
+                        <h2> {objectSeatsAPI.movie.title}</h2>
+                        <h2>{objectSeatsAPI.day.weekday}  - {objectSeatsAPI.name}</h2>
+                    </DateSession >
+                }
+            </Footer>
 
         </>
     )
 }
 const TitlePage = styled.h1`
 
+`;
+
+const DateSession = styled.div``;
+
+
+const BannerClass = styled.div`
+
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px 2px #0000001a;
+    border-radius: 3px;
+    padding: 8px;
+    width: 64px;
+    height: 89px;
+
+   
+img {
+    height: 100%;
+    width: 100%;
+
+
+}
 
 `;
+
+const Loading = styled.div`
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+
+
+    img {
+
+    margin-top: 200px;
+    height: 300px;
+    width: 300px;
+
+}`;

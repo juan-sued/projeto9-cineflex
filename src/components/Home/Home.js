@@ -25,13 +25,13 @@ export default function Home() {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
 
         promise.then(response => {
-            console.log(response.data)
+
             setPostersFilmsAPI([...response.data])
         })
     }, []
     )
 
-    console.log("REQUISITOU A PRIMEIRA API", postersFilmsAPI);
+
 
 
     return (

@@ -2,14 +2,15 @@ import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
+import image from "../../assets/loading.jpeg"
 
 //função que componetiza o banner
 export default function BannerFilm({ postersFilmsAPI, banner, idfilm }) {
     return (
         <BannerFilmClass >
-            {console.log("batatinhaapi", postersFilmsAPI)}
+
             <Link to={`/filme/${idfilm}`}>
-                {postersFilmsAPI === null ? '<LoadImageClass src="../../assets/loading.jpeg" alt="" />' : <img src={banner} alt="" />}
+                {postersFilmsAPI === null ? <LoadImageClass src={image} alt="" /> : <img src={banner} alt="" />}
 
             </Link>
         </BannerFilmClass >
@@ -26,7 +27,7 @@ const BannerFilmClass = styled.button`
     background: #FFFFFF;
     box-shadow: 0px 2px 4px 2px #0000001a;
     border-radius: 3px;
-    padding: 4px;
+    padding: 8px;
     width: 145px;
     height: 209px;
     margin: 20px 0 0 20px;
