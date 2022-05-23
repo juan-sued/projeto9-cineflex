@@ -1,5 +1,8 @@
-import React from "react";
+
 import styled from "styled-components";
+
+import { useState } from "react";
+
 //import react
 
 
@@ -11,38 +14,73 @@ import styled from "styled-components";
 
 
 //função que componetiza um assento
-function Seat({ isAvailable, numberSeat }) {
-
-
-    function seatReserved(seat) {
-
-        console.log("clicou", seat)
+function Seat(props) {
 
 
 
 
+    const [seatSelected, setSeatSelected] = useState(false)
+
+
+    //função que pega o botão que foi clicado
+    function seatClick(seatClicked, isAvailableClicked) {
+        console.log(seatClicked)
+        console.log(isAvailableClicked)
+
+        if (isAvailableClicked === true) {
+
+            props.incrementSeatReservedList(seatClicked)
+
+            setSeatSelected(!seatSelected);
+
+        } else {
+
+            console.log("disponível", seatClicked)
+        }
     }
 
     return (
         <SeatClass backgroundColor={
-            isAvailable ? '#C3CFD9' : '#FBE192'}
+            !props.isAvailable ? '#FBE192' : seatSelected ? '#8DD7CF' : '#C3CFD9'}
             borderColor={
-                isAvailable ? '#7B8B99' : '#F7C52B'} onClick={() => seatReserved(numberSeat)}   >
+                !props.isAvailable ? '#F7C52B' : seatSelected ? '#45BDB0' : '#808F9D'} onClick={() => seatClick(props.numberSeat, props.isAvailable)} >
 
-            {numberSeat}
+            {props.numberSeat}
         </SeatClass>
 
     )
 }
 
 
+
+
+
+
+
 //função que renderiza assentos
 export default function Seats({ seats }) {
 
+    const [seatsReservedList, setSeatsReservedList] = useState([])
+
+    function incrementSeatReservedList(seat) {
+
+        if (seatsReservedList.find(e => e === seat)) {
+            console.log("encontrou um igual")
+            const seatsReservedListFilter = seatsReservedList.filter(e => e !== seat)
+            console.log("fez o filter")
+
+            setSeatsReservedList(seatsReservedListFilter)
+
+        } else {
+            setSeatsReservedList([...seatsReservedList, seat])
+        }
+    }
+
+    console.log(seatsReservedList)
     return (
 
         <SeatsClass >
-            {seats.map((element, index) => <Seat key={index} isAvailable={element.isAvailable} numberSeat={index + 1} />)}
+            {seats.map((element, index) => <Seat key={index} isAvailable={element.isAvailable} incrementSeatReservedList={incrementSeatReservedList} numberSeat={index + 1} />)}
         </SeatsClass>
     )
 }
@@ -74,9 +112,5 @@ const SeatClass = styled.button`
     border-radius: 12px;
     margin-right: 10px;
     margin-bottom: 19px;
-
-
-
-
 
 `;
