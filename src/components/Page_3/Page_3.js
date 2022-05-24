@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 //import css
-
+import { TailSpin } from 'react-loader-spinner';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -63,14 +63,18 @@ export default function Page_3({
       <Footer>
         <BannerClass>
           {objectSeatsAPI.movie === undefined ? (
-            ''
+            <ContainerLoading>
+              <TailSpin color="var(--colorOrange)" height={80} width={80} />
+            </ContainerLoading>
           ) : (
             <img src={objectSeatsAPI.movie.posterURL} alt="" />
           )}
         </BannerClass>
 
         {objectSeatsAPI.movie === undefined ? (
-          ''
+          <ContainerLoading>
+            <TailSpin color="var(--colorOrange)" height={80} width={80} />
+          </ContainerLoading>
         ) : (
           <DateSession>
             <h2> {objectSeatsAPI.movie.title}</h2>
@@ -83,6 +87,14 @@ export default function Page_3({
     </>
   );
 }
+
+const ContainerLoading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 700px;
+`;
 const TitlePage = styled.h1``;
 
 const DateSession = styled.div``;
