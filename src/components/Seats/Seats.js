@@ -29,12 +29,7 @@ function Seat({ isAvailable, numberSeat, seatClick, incrementSeatReservedList })
 }
 
 //função que renderiza assentos
-export default function Seats({
-  seats,
-
-  seatsReservedList,
-  setSeatsReservedList
-}) {
+export default function Seats({ seats, seatsReservedList, setSeatsReservedList }) {
   //função que atualiza a lista de assentos reservados
   function incrementSeatReservedList(seat) {
     if (seatsReservedList.find(e => e === seat - 1)) {

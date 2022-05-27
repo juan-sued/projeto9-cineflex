@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-
 import { useNavigate } from 'react-router-dom';
 
 export default function InputsBuyer({
@@ -20,25 +19,24 @@ export default function InputsBuyer({
   //variável de estado que guarda o valor do CPF do User
   const [inputValueCpf, setInputValueCpf] = useState('');
 
-  //função que impede que o navegador realize o reaload
+  //função que pega os dados do usuário, insere no objeto e envia para a API
   function submitData(event) {
     event.preventDefault();
 
-    //
     objUserBuyer.ids = seatsReservedList.map(seat => seats[seat].id);
     objUserBuyer.name = inputValueName;
     objUserBuyer.cpf = inputValueCpf;
-    //
 
     const newobjUserBuyer = { ...objUserBuyer };
+
     setObjUserBuyer(newobjUserBuyer);
+
     const promisse = axios.post(URL, objUserBuyer);
     promisse.then(response => {
       console.log('enviado com sucesso', response.data);
 
       navigate('../sucesso', { replace: true });
     });
-
     setInputValueCpf('');
     setInputValueCpf('');
   }
